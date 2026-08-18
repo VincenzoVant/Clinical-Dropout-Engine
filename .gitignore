@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+docker_learning_notes.md
+
+# Real PDS patient-level trial data — governed by a data use agreement,
+# cannot be redistributed. See Design Spec §3. Never remove this line.
+Data/raw/
+
+# Kept private on request — not part of the public portfolio repo.
+Design Spec.md
+Data/README.md
+Data/rename_data.sh
