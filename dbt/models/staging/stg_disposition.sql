@@ -10,7 +10,8 @@ renamed as (
         trial_id,
         subjid,
         eoip as discontinuation_reason,
-        eoipcd as discontinuation_reason_code
+        eoipcd as discontinuation_reason_code,
+        eoipdy as discontinuation_day
     from source
 
 )

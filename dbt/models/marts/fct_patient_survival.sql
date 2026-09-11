@@ -33,6 +33,7 @@ joined as (
         demo.on_panitumumab,
         disposition.discontinuation_reason,
         disposition.discontinuation_reason_code,
+        disposition.discontinuation_day,
         progression.progressed_or_died as event,
         progression.event_or_censor_day as time_days
     from demo
