@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 .DS_Store
-docker_learning_notes.md
+learning-notes/
 
 # Real PDS patient-level trial data — governed by a data use agreement,
 # cannot be redistributed. See Design Spec §3. Never remove this line.

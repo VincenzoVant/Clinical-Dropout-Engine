@@ -1,0 +1,4 @@
+pandas
+pyreadstat
+sqlalchemy
+psycopg2-binary

@@ -1,0 +1,9 @@
+name: trial_retention 
+version: "1.0.0"
+config-version: 2
+profile: trial_retention
+
+model-paths : ["models"]
+test-paths : ["tests"]
+models: 
+  trial_retention:

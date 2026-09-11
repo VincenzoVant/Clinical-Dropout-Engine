@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: demo_raw
+      - name: disposit_raw
+      - name: a_eendpt_raw
