@@ -16,7 +16,6 @@ services:
   dbt:
     image: ghcr.io/dbt-labs/dbt-postgres:1.7.latest
     platform: linux/amd64
-    command: ["build"]
     depends_on:
       postgres:
         condition: service_healthy
@@ -31,6 +30,8 @@ services:
       DBT_DBNAME: postgres
       DBT_SCHEMA: public 
       DBT_PROFILES_DIR: /usr/app/dbt
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["dbt deps && dbt build"]
 
   api: 
     build:

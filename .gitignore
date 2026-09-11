@@ -4,11 +4,17 @@ __pycache__/
 .DS_Store
 learning-notes/
 
+# dbt build artifacts — regenerated on every `dbt build`, not source.
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/.user.yml
+
 # Real PDS patient-level trial data — governed by a data use agreement,
 # cannot be redistributed. See Design Spec §3. Never remove this line.
-Data/raw/
+data/raw/
 
 # Kept private on request — not part of the public portfolio repo.
 Design Spec.md
-Data/README.md
-Data/rename_data.sh
+data/README.md
+data/rename_data.sh

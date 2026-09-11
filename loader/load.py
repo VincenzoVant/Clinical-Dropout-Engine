@@ -29,6 +29,7 @@ DOMAINS = [
     ("demo.sas7bdat", "demo_raw"),
     ("disposit.sas7bdat", "disposit_raw"),
     ("a_eendpt.sas7bdat", "a_eendpt_raw"),
+    ("ae.sas7bdat", "ae_raw"),
 ]
 
 
@@ -51,7 +52,15 @@ def load_domain(engine, sas_filename, table_name):
         print(f"  {trial_id}: read {len(df)} rows from {path}")
 
     combined = pd.concat(frames, ignore_index=True)
-    combined.to_sql(table_name, engine, schema="raw", if_exists="replace", index=False)
+
+    # pandas' if_exists="replace" issues a plain DROP TABLE, which Postgres refuses once a dbt
+    # view (e.g. stg_demo) depends on this table — and since postgres-data is a named volume,
+    # that view survives across `docker compose up`/`down` cycles. Drop with CASCADE ourselves
+    # first so re-running the loader stays idempotent even after dbt has built on top of it.
+    with engine.begin() as conn:
+        conn.execute(text(f"DROP TABLE IF EXISTS raw.{table_name} CASCADE"))
+
+    combined.to_sql(table_name, engine, schema="raw", if_exists="append", index=False)
     print(f"Loaded {len(combined)} total rows into raw.{table_name}")
 
 
